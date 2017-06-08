@@ -11,7 +11,9 @@ import {
 
 import { FacebookAuthButton} from 'components'
 
-export default function Authenticate ({error, isFetching, onAuth}){
+export default function Authenticate ({
+    error, isFetching, onAuth
+}){
     return (
         <div className={centeredContainer}>
            <h1 className={largeHeader}>{' Authenticate'}</h1>
