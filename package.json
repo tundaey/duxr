@@ -10,6 +10,7 @@
   },
   "keywords": [],
   "dependencies": {
+    "firebase": "^4.1.2",
     "prop-types": "^15.5.10",
     "react": "^15.0.1",
     "react-dom": "^15.0.1",

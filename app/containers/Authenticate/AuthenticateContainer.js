@@ -10,8 +10,15 @@ import { connect } from 'react-redux';
 import {bindActionCreators} from 'redux'
 
 const AuthenticateContainer = React.createClass({
-    handleAuth(){
+    contextTypes: {
+        router: PropTypes.object.isRequired
+    },
+    handleAuth(e){
+        e.preventDefault()
         this.props.fetchAndHandleAuthedUser()
+        .then(()=> {
+            this.context.router.replace('feed')
+        })
     },
     render(){
         return (
