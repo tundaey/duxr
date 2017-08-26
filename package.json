@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server",
+    "start": "webpack-dev-server --open",
     "production": "webpack -p",
     "lint": "eslint app/."
   },
@@ -14,8 +14,11 @@
     "prop-types": "^15.5.10",
     "react": "^15.0.1",
     "react-dom": "^15.0.1",
+    "react-icons": "^2.2.5",
+    "react-modal": "^2.0.6",
     "react-redux": "^5.0.5",
     "react-router": "^2.0.1",
+    "react-router-redux": "^4.0.8",
     "redux": "^3.6.0",
     "redux-thunk": "^2.2.0"
   },

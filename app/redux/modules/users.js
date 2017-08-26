@@ -1,3 +1,4 @@
+import {fetchUser} from 'helpers/api'
 import auth, {logout, saveUser} from 'helpers/auth';
 import { formatUserinfo } from 'helpers/utils'
 
@@ -36,11 +37,21 @@ function fetchingUserFailure(){
 }
 
 export function fetchingUserSuccess(uid, user, timestamp){
+  console.log('user action', uid)
   return {
     type: FETCHING_USER_SUCCESS,
     uid,
     user,
     timestamp
+  }
+}
+
+export function fetchAndHandleUser(uid){
+  return function(dispatch){
+    dispatch(fetchingUser())
+    return fetchUser(uid)
+    .then((user)=> dispatch(fetchingUserSuccess(uid, user, Date.now())))
+    .catch((error)=> dispatch(fetchingUserFailure(error)))
   }
 }
 
@@ -102,6 +113,7 @@ const initialState = {
 }
 
 export default function users (state = initialState, action) {
+  
   switch (action.type) {
     case AUTH_USER :
       return {
@@ -127,6 +139,7 @@ export default function users (state = initialState, action) {
         error: action.error,
       }
     case FETCHING_USER_SUCCESS:
+    console.log('action.uid', action.uid)
       return action.user === null
         ? {
           ...state,
